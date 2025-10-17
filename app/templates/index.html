@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Clothing Store</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Welcome to the Clothing Store</h1>
+
+  <nav>
+    {% for c in categories %}
+      <a href="{{ url_for('category', category=c) }}">{{ c }}</a>
+    {% endfor %}
+  </nav>
+
+  <form method="get" action="{{ url_for('home') }}">
+    <input type="text" name="q" placeholder="Search for an item..." value="{{ query or '' }}">
+    <button type="submit">Search</button>
+  </form>
+
+  {% if query %}
+    <p>{{ result_count }} item{{ 's' if result_count != 1 else '' }} matched "{{ query }}"</p>
+  {% endif %}
+
+  <div class="grid">
+    {% for item in clothes %}
+      <div class="card">
+        <h3>{{ item.Clothes_Title }}</h3>
+        <p>{{ item.Clothes_Description }}</p>
+        <a href="{{ url_for('item_detail', item_slug=item.slug) }}">View Details</a>
+      </div>
+    {% endfor %}
+  </div>
+</body>
+</html>
