@@ -7,13 +7,22 @@
     <h1>{{ item.Clothes_Title }}</h1>
     <p>{{ item.Clothes_Description }}</p>
 
+    <p><a href="{{ url_for('add_review', item_slug=item['slug']) }}">Add a New Review</a></p>
+
     <h2>Customer Reviews</h2>
     {% if reviews %}
         <ul>
         {% for review in reviews %}
             <li>
-                <strong>{{ review.Title }}</strong><br>
-                {{ review.Review_Text }}
+                    <strong>{{ review.Title }}</strong><br>
+                    {{ review.Review_Text }}<br>
+                    <em>Rating: {{ review.Rating }}</em><br>
+                    <strong>Recommendation:</strong>
+                    {% if review.Recommended == 1 %}
+                        Recommended
+                    {% else %}
+                        Not Recommended
+                    {% endif %}
             </li>
         {% endfor %}
         </ul>

@@ -8,6 +8,8 @@
 <body>
   <h1>Welcome to the Clothing Store</h1>
 
+  
+
   <nav>
     {% for c in categories %}
       <a href="{{ url_for('category', category=c) }}">{{ c }}</a>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Result</title>
+</head>
+<body>
+    <h1>Review Summary</h1>
+
+    <p><strong>Item:</strong> {{ item.Clothes_Title }}</p>
+    <p><strong>Title:</strong> {{ review.Title }}</p>
+    <p><strong>Review:</strong> {{ review.Review_Text }}</p>
+    <p><strong>Rating:</strong> {{ review.Rating }}</p>
+
+    <h3>Predicted Recommendation: 
+        {% if review.Recommended == 1 %}
+             Recommended!!!
+        {% else %}
+             Not Recommended!!!
+        {% endif %}
+    </h3>
+
+    <form method="POST" action="{{ url_for('add_review', item_slug=item.slug) }}">
+        <p>If you disagree, please override:</p>
+        <label><input type="radio" name="override" value="1"> Recommended</label>
+        <label><input type="radio" name="override" value="0"> Not Recommended</label>
+        <br><br>
+
+        <!-- Hidden data to carry over -->
+        <input type="hidden" name="confirm" value="true">
+        <input type="hidden" name="title" value="{{ review.Title }}">
+        <input type="hidden" name="review" value="{{ review.Review_Text }}">
+        <input type="hidden" name="rating" value="{{ review.Rating }}">
+        <input type="hidden" name="predicted_label" value="{{ review.Recommended }}">
+
+        <button type="submit">Confirm Review</button>
+    </form>
+
+    <p><a href="{{ url_for('item_detail', item_slug=item.slug) }}">← Back to {{ item.Clothes_Title }}</a></p>
+</body>
+</html>
+
+
