@@ -1,0 +1,23 @@
+# Virtual environments
+venv/
+env/
+
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+
+# System files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# image for criteria fix
+Screenshot 2025-10-22 211153.png
+
+# kaggle dataset
+#kaggle_data/
