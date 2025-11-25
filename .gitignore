@@ -19,5 +19,21 @@ Thumbs.db
 # image for criteria fix
 Screenshot 2025-10-22 211153.png
 
+# Ignore all data and derived artifacts
+data/
+features/
+models/glove_model.pkl
+*.npy
+*.pkl
+
+# Keep TF-IDF vectorizer if desired
+# (Optional: remove this line if you want to keep tfidf_vectorizer.pkl committed)
+# models/tfidf_vectorizer.pkl
+
+# OS / IDE / Notebook files
+*.ipynb_checkpoints
+__pycache__/
+*.pyc
+
 # kaggle dataset
 #kaggle_data/
