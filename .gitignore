@@ -20,7 +20,12 @@ Thumbs.db
 Screenshot 2025-10-22 211153.png
 
 # Ignore all data and derived artifacts
-data/
+data/*.pkl
+data/*.npy
+
+
+
+#Ignore features and models
 features/
 models/glove_model.pkl
 *.npy
@@ -32,8 +37,9 @@ models/glove_model.pkl
 
 # OS / IDE / Notebook files
 *.ipynb_checkpoints
-__pycache__/
-*.pyc
 
-# kaggle dataset
-#kaggle_data/
+
+# External datasets and embeddings
+kaggle_data/
+glove.6B/
+
